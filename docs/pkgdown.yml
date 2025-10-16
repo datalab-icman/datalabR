@@ -1,0 +1,8 @@
+pandoc: 3.6.3
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles: {}
+last_built: 2025-10-16T07:39Z
+urls:
+  reference: https://datalab-icman.github.io/datalabR/reference
+  article: https://datalab-icman.github.io/datalabR/articles

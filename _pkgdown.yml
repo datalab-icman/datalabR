@@ -1,0 +1,34 @@
+url: https://datalab-icman.github.io/datalabR
+
+home:
+  title: Provides a suite of useful tools from the Data Lab ICMAN
+
+authors:
+  Data Lab ICMAN:
+    href: datalabR
+
+template:
+  bootstrap: 5
+  # bootswatch: materia
+  math-rendering: mathjax
+  light-switch: true
+  bslib:
+    # base_font: {google: "Roboto"}
+    # heading_font: {google: "Roboto Slab"}
+    # code_font: {google: "JetBrains Mono"}
+    primary: "#0054AD"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
+    # pkgdown-nav-height: 100px
+    danger: "#A6081A"
+  includes:
+    in_header:
+      <script defer data-domain="datalab-icman.github.io/datalabR" src="https://plausible.io/js/plausible.js"></script>
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github, lightswitch]
+
+development:
+  mode: auto
