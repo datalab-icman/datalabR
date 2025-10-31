@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisión datalabR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #0054AD 0%, #003d7a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .critical { color: #e74c3c; }
+        .warning { color: #f39c12; }
+        .good { color: #27ae60; }
+        .info { color: #3498db; }
+        
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0054AD;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .issue {
+            background: #fff;
+            border-left: 4px solid;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .issue-critical { 
+            border-color: #e74c3c; 
+            background: #ffe6e6;
+        }
+        .issue-warning { 
+            border-color: #f39c12; 
+            background: #fff9e6;
+        }
+        .issue-info { 
+            border-color: #3498db; 
+            background: #e6f3ff;
+        }
+        .issue-header {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .issue-description {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .badge-critical { background: #e74c3c; color: white; }
+        .badge-warning { background: #f39c12; color: white; }
+        .badge-info { background: #3498db; color: white; }
+        .badge-good { background: #27ae60; color: white; }
+        
+        .recommendation {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+        .recommendation strong {
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Revisión del Paquete datalabR</h1>
+            <p>Análisis completo de código y estructura</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number critical">3</div>
+                <div class="stat-label">Problemas Críticos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number warning">5</div>
+                <div class="stat-label">Advertencias</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number info">4</div>
+                <div class="stat-label">Sugerencias</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number good">✓</div>
+                <div class="stat-label">Estructura Básica</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">🚨 Problemas Críticos</h2>
+                
+                <div class="issue issue-critical">
+                    <div class="issue-header">
+                        <span class="badge badge-critical">CRÍTICO</span>
+                        <span>1. Error de tipeo en nombre de archivo</span>
+                    </div>
+                    <div class="issue-description">
+                        El archivo del proyecto se llama <code>datalabrR.Rproj</code> pero debería ser <code>datalabR.Rproj</code> (falta la 'r' minúscula).
+                    </div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Renombrar el archivo a <code>datalabR.Rproj</code>
+                    </div>
+                </div>
+                
+                <div class="issue issue-critical">
+                    <div class="issue-header">
+                        <span class="badge badge-critical">CRÍTICO</span>
+                        <span>2. Función sin manejar errores de red</span>
+                    </div>
+                    <div class="issue-description">
+                        En <code>wflow_datalabr()</code>, la descarga de la licencia puede fallar sin control adecuado (línea ~247-255).
+                    </div>
+                    <div class="code-block">license_full_text <- tryCatch({
+  readLines(url(license_url), warn = FALSE)
+}, error = function(e) {
+  "Failed to download..." # ⚠️ Esto escribe el mensaje como contenido
+})</div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Agregar un warning y contenido alternativo:
+                        <div class="code-block">error = function(e) {
+  warning(sprintf("No se pudo descargar la licencia: %s", e$message))
+  return(c(
+    sprintf("%s License", toupper(lic)),
+    "",
+    "Visit the official license URL for full text."
+  ))
+}</div>
+                    </div>
+                </div>
+
+                <div class="issue issue-critical">
+                    <div class="issue-header">
+                        <span class="badge badge-critical">CRÍTICO</span>
+                        <span>3. Gestión de directorio de trabajo peligrosa</span>
+                    </div>
+                    <div class="issue-description">
+                        Línea 53: <code>on.exit(setwd(original_wd))</code> no maneja bien los errores tempranos.
+                    </div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Mover <code>on.exit</code> después de crear el proyecto:
+                        <div class="code-block">workflowr::wflow_start(project_name, change_wd = TRUE, existing = existing)
+on.exit(setwd(original_wd), add = TRUE)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">⚠️ Advertencias</h2>
+                
+                <div class="issue issue-warning">
+                    <div class="issue-header">
+                        <span class="badge badge-warning">WARNING</span>
+                        <span>4. Documentación del parámetro 'existing'</span>
+                    </div>
+                    <div class="issue-description">
+                        El tipo de dato es incorrecto: dice "Character" pero debe ser "Logical".
+                    </div>
+                    <div class="code-block">@param existing Logical. If TRUE, creates project in existing directory.</div>
+                </div>
+                
+                <div class="issue issue-warning">
+                    <div class="issue-header">
+                        <span class="badge badge-warning">WARNING</span>
+                        <span>5. Validación de dominio faltante</span>
+                    </div>
+                    <div class="issue-description">
+                        El parámetro <code>domain = NULL</code> puede causar errores si se usa GitLab sin especificar dominio.
+                    </div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Agregar validación:
+                        <div class="code-block">if (repo == "GitLab" && is.null(domain)) {
+  stop("El parámetro 'domain' es obligatorio cuando repo='GitLab'")
+}</div>
+                    </div>
+                </div>
+
+                <div class="issue issue-warning">
+                    <div class="issue-header">
+                        <span class="badge badge-warning">WARNING</span>
+                        <span>6. Strings multilínea sin función helper</span>
+                    </div>
+                    <div class="issue-description">
+                        Hay muchos strings largos directamente en el código (disclaimer_text, license_rmd_content, etc.). Dificulta el mantenimiento.
+                    </div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Mover templates a archivos externos en <code>inst/templates/</code>
+                    </div>
+                </div>
+
+                <div class="issue issue-warning">
+                    <div class="issue-header">
+                        <span class="badge badge-warning">WARNING</span>
+                        <span>7. No hay tests unitarios</span>
+                    </div>
+                    <div class="issue-description">
+                        Aunque tienes configurado <code>testthat</code>, no hay archivos de test en <code>tests/testthat/</code>.
+                    </div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Crear al menos tests básicos:
+                        <div class="code-block">usethis::use_test("show_symbol_legend")
+usethis::use_test("wflow_datalabr")</div>
+                    </div>
+                </div>
+
+                <div class="issue issue-warning">
+                    <div class="issue-header">
+                        <span class="badge badge-warning">WARNING</span>
+                        <span>8. NEWS.md sin actualizar</span>
+                    </div>
+                    <div class="issue-description">
+                        El archivo dice "RElab" en lugar de "datalabR".
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">💡 Sugerencias de Mejora</h2>
+                
+                <div class="issue issue-info">
+                    <div class="issue-header">
+                        <span class="badge badge-info">SUGERENCIA</span>
+                        <span>9. Mejorar mensajes de progreso</span>
+                    </div>
+                    <div class="issue-description">
+                        Usar el paquete <code>cli</code> para mensajes más elegantes:
+                    </div>
+                    <div class="code-block">cli::cli_alert_success("Project created successfully")
+cli::cli_progress_step("Writing files...")</div>
+                </div>
+
+                <div class="issue issue-info">
+                    <div class="issue-header">
+                        <span class="badge badge-info">SUGERENCIA</span>
+                        <span>10. Añadir función de validación</span>
+                    </div>
+                    <div class="issue-description">
+                        Crear una función helper para validar parámetros al inicio:
+                    </div>
+                    <div class="code-block">validate_params <- function(project_name, repo, domain, lic) {
+  # Validaciones centralizadas
+}</div>
+                </div>
+
+                <div class="issue issue-info">
+                    <div class="issue-header">
+                        <span class="badge badge-info">SUGERENCIA</span>
+                        <span>11. Documentar dependencias opcionales</span>
+                    </div>
+                    <div class="issue-description">
+                        <code>workflowr</code> no está en Imports, solo lo verificas con requireNamespace.
+                    </div>
+                    <div class="recommendation">
+                        <strong>✓ Solución:</strong> Añadir a DESCRIPTION:
+                        <div class="code-block">Suggests: 
+    workflowr,
+    cli</div>
+                    </div>
+                </div>
+
+                <div class="issue issue-info">
+                    <div class="issue-header">
+                        <span class="badge badge-info">SUGERENCIA</span>
+                        <span>12. Agregar vignette</span>
+                    </div>
+                    <div class="issue-description">
+                        Crear una viñeta mostrando un ejemplo completo de uso del paquete.
+                    </div>
+                    <div class="code-block">usethis::use_vignette("getting-started")</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">✅ Aspectos Positivos</h2>
+                <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; border-left: 4px solid #27ae60;">
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li>✓ Estructura del paquete correcta</li>
+                        <li>✓ Documentación roxygen2 presente</li>
+                        <li>✓ Licencia GPL-3 correctamente especificada</li>
+                        <li>✓ URLs del repositorio bien configuradas</li>
+                        <li>✓ Configuración de pkgdown adecuada</li>
+                        <li>✓ Uso de símbolos Unicode elegante en mensajes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

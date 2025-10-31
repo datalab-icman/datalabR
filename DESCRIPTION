@@ -13,7 +13,9 @@ Biarch: true
 Depends: 
     R (>= 4.1)
 Imports:
-    knitr
+    knitr,
+    readxl,
+    rcrossref
 SystemRequirements: GNU make
 Suggests: 
     workflowr,
