@@ -2,20 +2,27 @@
 % Please edit documentation in R/create_bib_file_from_excel.R
 \name{create_bib_file_from_excel}
 \alias{create_bib_file_from_excel}
-\title{Create a .bib File from an Excel Sheet of DOIs}
+\title{Create a .bib File from an Excel Sheet with DOI-Based Unique Keys}
 \usage{
 create_bib_file_from_excel(excel_path, doi_column_name, output_bib_path)
 }
 \arguments{
-\item{excel_path}{Path to the .xlsx or .xls file.}
+\item{excel_path}{A string with the path to the .xlsx or .xls file.}
 
-\item{doi_column_name}{Name of the column in the Excel file that contains the DOIs.}
+\item{doi_column_name}{A string with the exact name of the column containing
+the DOIs.}
 
-\item{output_bib_path}{Path and name for the output .bib file (e.g., "references.bib").}
+\item{output_bib_path}{A string with the desired file path for the output
+.bib file (e.g., "references.bib").}
+}
+\value{
+This function does not return a value but prints messages to the
+console and writes a .bib file to the specified path.
 }
 \description{
-Reads a list of DOIs from a specified column in an Excel file,
-fetches their BibTeX entries, and compiles them into a single .bib file.
+This function reads a list of DOIs from an Excel file, fetches their BibTeX
+entries, and rewrites the citation key for each entry to be a sanitized
+version of its own DOI. This guarantees that every key is unique and traceable.
 }
 \examples{
 \dontrun{
