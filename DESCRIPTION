@@ -13,6 +13,7 @@ Biarch: true
 Depends: 
     R (>= 4.1)
 Imports:
+    R6,
     knitr,
     readxl,
     rcrossref
